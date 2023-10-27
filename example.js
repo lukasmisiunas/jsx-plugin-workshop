@@ -33,28 +33,28 @@ function stringToObjectPlugin() {
       StringLiteral(path) {
         if (path.node.value === 'I should be in an object') {
           // Without helpers
-          // path.replaceWith({
-          //   type: 'ObjectExpression',
-          //   properties: [
-          //     {
-          //       type: 'ObjectProperty',
-          //       key: { type: 'Identifier', name: 'bar' },
-          //       value: { type: 'StringLiteral', value: 'I am in an object' },
-          //       computed: false,
-          //       shorthand: false,
-          //     },
-          //   ],
-          // });
+          path.replaceWith({
+            type: 'ObjectExpression',
+            properties: [
+              {
+                type: 'ObjectProperty',
+                key: { type: 'Identifier', name: 'bar' },
+                value: { type: 'StringLiteral', value: 'I am in an object' },
+                computed: false,
+                shorthand: false,
+              },
+            ],
+          });
 
           // With helpers
-          path.replaceWith(
-            types.objectExpression([
-              types.objectProperty(
-                types.identifier('bar'),
-                types.stringLiteral('I am in an object')
-              ),
-            ])
-          );
+          // path.replaceWith(
+          //   types.objectExpression([
+          //     types.objectProperty(
+          //       types.identifier('bar'),
+          //       types.stringLiteral('I am in an object')
+          //     ),
+          //   ])
+          // );
         }
       },
       ReferencedIdentifier(path) {
@@ -68,6 +68,8 @@ function stringToObjectPlugin() {
               types.identifier('bar')
             )
           );
+
+          // foo.bar
         }
       },
     },
@@ -79,6 +81,7 @@ const stringToObjectSource = `
 `;
 
 const { code } =
-  babel.transform(fooToBarSource, { plugins: [fooToBarPlugin] }) ?? {};
+  babel.transform(stringToObjectSource, { plugins: [stringToObjectPlugin] }) ??
+  {};
 
 console.log(code);
