@@ -9,7 +9,12 @@ module.exports = () => {
     // Enable JSX traversal
     inherits: jsxSyntaxPlugin,
     visitor: {
-      JSXElement(path) {},
+      JSXElement(path) {
+        // Ignore member experssions (e.g., <Composite.Label>) and namespaced tags (e.g. <svg:text>)
+        if (!types.isJSXIdentifier(path.node.openingElement.name)) {
+          return;
+        }
+      },
     },
   };
 };
