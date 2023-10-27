@@ -14,8 +14,8 @@ Create a babel plugin to convert JSX code to Javascript
 
 ### AST and Babel
 
-https://astexplorer.net/
-https://github.com/jamiebuilds/babel-handbook/blob/master/translations/en/plugin-handbook.md#toc-introduction
+- https://astexplorer.net/
+- https://github.com/jamiebuilds/babel-handbook/blob/master/translations/en/plugin-handbook.md#toc-introduction
 
 ## Workshop
 
@@ -34,7 +34,7 @@ https://github.com/jamiebuilds/babel-handbook/blob/master/translations/en/plugin
 #### Builders
 
 - `types.identifier` - creates an identifier node, e.g., object key, variable name, function name etc.
-- `types.stringLiteral` - creates a node for a simple string (e.g., `"test"``)
+- `types.stringLiteral` - creates a node for a simple string (e.g., `"test"`)
 - `types.callExpression` - creates a function call
 
   in:
@@ -94,10 +94,18 @@ Convert a JSX tag to `React.createElement(tagName, {})` call
   - props object (in this case, it will be empty)
   </details>
 
-### Task 2 - Props
+### Task 2 - String props
 
-Add support for parsing string props (e.g., `<div prop="hi" />`)
+Add support for parsing props, which are defined as string literals (e.g., `<div prop="hi" />`)
 
-### Task 3 - Children
+### Task 3 - Expression props
 
-Add support for children
+Add support for props, which are defined as an expression (`<div prop={ someExpression } />` e.g. `<div prop={1} />` or `<div prop={1 + 1} />`)
+
+### Task 4 - Text children
+
+Add support for text children - `<div>Text</div>`
+
+### Task 5 - Element children
+
+Add support for element children - `<div><span>Text in element</span></div>`

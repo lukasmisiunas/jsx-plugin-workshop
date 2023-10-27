@@ -1,11 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`jsx-plugin should transpile children 1`] = `"React.createElement("div", {}, React.createElement("span", {}, "Hello"));"`;
+exports[`parse-jsx-plugin Task 1: should transpile empty jsx tag 1`] = `"React.createElement("div", {});"`;
 
-exports[`jsx-plugin should transpile empty jsx tag 1`] = `"React.createElement("div", {});"`;
-
-exports[`jsx-plugin should transpile string props 1`] = `
+exports[`parse-jsx-plugin Task 2: should transpile string props 1`] = `
 "React.createElement("div", {
   foo: "bar"
 });"
 `;
+
+exports[`parse-jsx-plugin Task 3: should transpile expression props 1`] = `
+"React.createElement("div", {
+  prop1: 1,
+  prop2: 1 + 1
+});"
+`;
+
+exports[`parse-jsx-plugin Task 4: should transpile text children 1`] = `"React.createElement("div", {}, "Hello");"`;
+
+exports[`parse-jsx-plugin Task 5: should transpile element children 1`] = `"React.createElement("div", {}, React.createElement("span", {}, "Hello"));"`;
