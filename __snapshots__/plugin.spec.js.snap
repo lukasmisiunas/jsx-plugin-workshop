@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`jsx-plugin should transpile children 1`] = `"React.createElement("div", {}, React.createElement("span", {}, "Hello"));"`;
+
+exports[`jsx-plugin should transpile empty jsx tag 1`] = `"React.createElement("div", {});"`;
+
+exports[`jsx-plugin should transpile string props 1`] = `
+"React.createElement("div", {
+  foo: "bar"
+});"
+`;
