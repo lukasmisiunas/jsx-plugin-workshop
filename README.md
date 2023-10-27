@@ -9,6 +9,8 @@ Create a babel plugin to convert JSX code to Javascript
   - [Task 1](#task-1---jsx)
   - [Task 2](#task-2---props)
   - [Task 3](#task-3---children)
+  - [Task 4](#task-4---text-children)
+  - [Task 5](#task-5---element-children)
 
 ## Intro
 
@@ -20,16 +22,6 @@ Create a babel plugin to convert JSX code to Javascript
 ## Workshop
 
 ### Helper methods
-
-#### Validators
-
-- `types.isJSXIdentifier`
-- `types.isJSXAttribute`
-- `types.isStringLiteral` - is node a string
-- `types.isJSXExpressionContainer` - is node a container for expression, e.g. `<div prop={'I am inside an expression container'} />>`
-- `types.isJSXSpreadAttribute` - e.g., `<div { ...spreadProps }` />
-- `types.isJSXText` - e.g., `<div>This is JSX text</div>`
-- `types.isJSXElement`
 
 #### Builders
 
@@ -68,30 +60,29 @@ Create a babel plugin to convert JSX code to Javascript
   { foo: 'bar', key: 'value' }
   ```
 
+#### Validators
+
+- `types.isJSXIdentifier`
+- `types.isJSXAttribute`
+- `types.isStringLiteral`
+- `types.isJSXExpressionContainer` - is node a container for expression, e.g. `<div prop={'I am inside an expression container'} />>`
+- `types.isJSXText` - e.g., `<div>This is JSX text</div>`
+- `types.isJSXElement`
+
 ### Task 1 - JSX
 
-Convert a JSX tag to `React.createElement(tagName, {})` call
+Convert a JSX tag to `React.createElement` call
 
 <details>
-  <summary>Hint 1</summary>
-  Babel builders to use:
+  <summary>Hint</summary>
 
-- `types.callExpression`
-- `types.memberExpression`
-- `types.stringLiteral`
-- `types.identifier`
-- `types.objectExpression`
-</details>
-
-<details>
-  <summary>Hint 2</summary>
-  `types.callExpression` expects two arguments:
+Visitor should return `types.callExpression`, which expects two arguments:
 
 - the name of the function. In this case, the name of the function is `React.createElement`, which is a **member expression**.
 - array of nodes, which represent parameters of the final function. For now, it will have two items:
 
   - string literal node of the tag name
-  - props object (in this case, it will be empty)
+  - object expression node (for this task, it won't have any properties)
   </details>
 
 ### Task 2 - String props
