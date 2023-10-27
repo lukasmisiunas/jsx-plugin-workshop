@@ -3,8 +3,7 @@
 Create a babel plugin to convert JSX code to Javascript
 
 - [Intro](#intro)
-  - [Babel](#babel)
-  - [AST](#ast)
+  - [AST and Babel](#ast-and-babel)
 - [Workshop](#workshop)
   - [Task 1](#task-1---jsx)
   - [Task 2](#task-2---props)
