@@ -43,7 +43,7 @@ Create a babel plugin to convert JSX code to Javascript
   myFunction('arg-1');
   ```
 
-- `types.objectExpression` and `types.objectProperty` - create an object literal. `objectExpression` creates a node for an empty object (e.g., `{}`). It accepts an array of `objectProperty` nodes, which represent object keys and values. E.g.,
+- `types.objectExpression` and `types.objectProperty` - create an object literal. `objectExpression` is a container, it holds an array of `objectProperty` nodes, which represent object keys and values
 
   in:
 
